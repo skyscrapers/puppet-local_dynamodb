@@ -10,13 +10,13 @@ class local_dynamodb::install inherits local_dynamodb {
     require => File['/opt/dynamodb-local'],
   }
 
-  file { '/usr/local/bin/dynamodb':
+  file { '/etc/init.d/local_dynamodb':
     ensure  => present,
     source  => 'puppet:///modules/local_dynamodb/dynamodb',
     require => Exec['install_dynamodb_local'],
     owner   => root,
     group   => root,
-    mode    => 0755,
+    mode    => '0755',
   }
 
 }
